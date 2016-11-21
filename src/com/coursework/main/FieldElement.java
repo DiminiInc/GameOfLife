@@ -38,6 +38,7 @@ public class FieldElement {
     public void setChannelRed() {
         this.channelRed = 0;
     }
+
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
@@ -52,5 +53,10 @@ public class FieldElement {
 
     public void setChannelRed(int channelRed) {
         this.channelRed = channelRed;
+    }
+
+    public void changeAlive()
+    {
+        this.alive^=alive;
     }
 }

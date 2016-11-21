@@ -9,8 +9,11 @@ public class Life extends JFrame{
 
     int countMilan;
     int countReal;
-    JFrame frame =new JFrame("Game Of Life");
-    JButton btnMilan =new JButton("AC Milan");
+    JFrame frame = new JFrame("Game Of Life");
+    JButton btnStart = new JButton("Start/Stop");
+    JButton btnStep = new JButton("Next step");
+
+    JButton btnMilan=new JButton("AC Milan");
     JButton btnReal=new JButton("Real Madrid");
     JLabel lblScore=new JLabel("Result: 0 x 0");
     JLabel lblScorer=new JLabel("Last Scorer: N/A");

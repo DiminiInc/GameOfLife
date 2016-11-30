@@ -16,6 +16,7 @@ public class Life extends JFrame{
 
     JButton btnStart = new JButton("Start/Stop");
     JButton btnStep = new JButton("Next step");
+    Field field = new Field();
 //
 //    JButton btnMilan=new JButton("AC Milan");
 //    JButton btnReal=new JButton("Real Madrid");
@@ -33,13 +34,15 @@ public class Life extends JFrame{
         InnerListener listener = new InnerListener();
 //        btnMilan.addActionListener(listener);
 //        btnReal.addActionListener(listener);
+        btnStep.addActionListener(listener);
         this.setTitle("Game of Life");
-
+       // setResizable(false);
         getContentPane().setBackground(new Color(200,200,200));
-        setSize(600,600);
+        setSize(1700,900);
         setLayout(new BorderLayout());
-        Field field = new Field();
-        field.setSize(500,500);
+
+        //field.setSize(1000,500);
+        field.setBackground(new Color(100,100,100));
         add(field, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(btnStart);
@@ -69,6 +72,10 @@ public class Life extends JFrame{
     {
         public void actionPerformed(ActionEvent ae)
         {
+            if (ae.getSource()==btnStep)
+            {
+                field.stepCalculation();
+            }
 //            if(ae.getSource() == btnMilan)
 //            {
 //                countMilan++;

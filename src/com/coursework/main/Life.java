@@ -14,7 +14,7 @@ public class Life extends JFrame{
     //JPanel boardCanvas = new JPanel();
     JPanel buttonPanel = new JPanel();
 
-    JButton btnStart = new JButton("Start/Stop");
+    JButton btnStart = new JButton("Start");
     JButton btnStep = new JButton("Next step");
     Field field = new Field();
 //
@@ -35,14 +35,15 @@ public class Life extends JFrame{
 //        btnMilan.addActionListener(listener);
 //        btnReal.addActionListener(listener);
         btnStep.addActionListener(listener);
+        btnStart.addActionListener(listener);
         this.setTitle("Game of Life");
        // setResizable(false);
-        getContentPane().setBackground(new Color(200,200,200));
+        getContentPane().setBackground(new Color(50,50,50));
         setSize(1700,900);
         setLayout(new BorderLayout());
 
         //field.setSize(1000,500);
-        field.setBackground(new Color(100,100,100));
+        field.setBackground(new Color(32,32,32));
         add(field, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(btnStart);
@@ -76,6 +77,32 @@ public class Life extends JFrame{
             {
                 field.stepCalculation();
             }
+            if (ae.getSource()==btnStart)
+            {
+                javax.swing.Timer timer = new Timer(10, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        field.stepCalculation();
+
+                    }
+                } );
+                //timer.start();
+                //btnStart.setText("Stop");
+                //timer.stop();
+                if (btnStart.getText()=="Start") {
+
+                   timer.start();
+                    btnStart.setText("Stop");
+                }
+                else
+                {
+                   timer.stop();
+                    //timer.removeActionListener();
+                    //timer.isRunning();
+                    btnStart.setText("Start");
+                }
+            }
+
 //            if(ae.getSource() == btnMilan)
 //            {
 //                countMilan++;

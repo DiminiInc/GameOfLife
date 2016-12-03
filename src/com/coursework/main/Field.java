@@ -19,39 +19,33 @@ public class Field extends JPanel{
             {
                 FieldArray[i][j]=new FieldElement();
                 FieldArrayNext[i][j]=new FieldElement();
-                if ((i==0)|| (i==50)|| (i==100)|| (i==150) || (i==200)) {
+                if ((i==0)|| (i==49)|| (i==99)|| (i==149) || (i==199) ||(j==0)|| (j==49)|| (j==99)) {
 
                     FieldArray[i][j].setAlive(true);
-                    if (i==200)
-                    {
                     FieldArray[i][j].setChannelRed(i);
                     FieldArray[i][j].setChannelGreen(j);
                     FieldArray[i][j].setChannelBlue(i / 2 + j);
-                    }
-                    if (i==150)
+
+                    if (i==149)
                     {
                         FieldArray[i][j].setChannelRed(0);
                         FieldArray[i][j].setChannelGreen(255);
                         FieldArray[i][j].setChannelBlue(0);
                     }
-                    if (i==100)
+                    if (i==99)
                     {
                         FieldArray[i][j].setChannelRed(255);
                         FieldArray[i][j].setChannelGreen(0);
                         FieldArray[i][j].setChannelBlue(0);
                     }
-                    if (i==50)
+                    if (i==49)
                     {
                         FieldArray[i][j].setChannelRed(0);
                         FieldArray[i][j].setChannelGreen(0);
                         FieldArray[i][j].setChannelBlue(255);
                     }
-                    if (i==0)
-                    {
-                        FieldArray[i][j].setChannelRed(i);
-                        FieldArray[i][j].setChannelGreen(j);
-                        FieldArray[i][j].setChannelBlue(i / 2 + j);
-                    }
+
+
                 }
             }
 //
@@ -124,9 +118,15 @@ public class Field extends JPanel{
                     if ( FieldArray[iIndex][jIndex].isAlive())
                     {
                         quantity++;
-                        red+=FieldArray[iIndex][jIndex].getChannelRed();
-                        green+=FieldArray[iIndex][jIndex].getChannelGreen();
-                        blue+=FieldArray[iIndex][jIndex].getChannelBlue();
+                        if (FieldArray[iIndex][jIndex].getChannelRed()>red)
+                            red=FieldArray[iIndex][jIndex].getChannelRed();
+                        if (FieldArray[iIndex][jIndex].getChannelBlue()>blue)
+                            blue=FieldArray[iIndex][jIndex].getChannelBlue();
+                        if (FieldArray[iIndex][jIndex].getChannelGreen()>green)
+                            green=FieldArray[iIndex][jIndex].getChannelGreen();
+//                        red+=FieldArray[iIndex][jIndex].getChannelRed();
+//                        green+=FieldArray[iIndex][jIndex].getChannelGreen();
+//                        blue+=FieldArray[iIndex][jIndex].getChannelBlue();
                     }
                 }
             }
@@ -156,9 +156,24 @@ public class Field extends JPanel{
             if (quantity==3)
             {
                 FieldArrayNext[xIndex][yIndex].setAlive(true);
-                FieldArrayNext[xIndex][yIndex].setChannelRed(red/3);
-                FieldArrayNext[xIndex][yIndex].setChannelGreen(green/3);
-                FieldArrayNext[xIndex][yIndex].setChannelBlue(blue/3);
+                red-=1;
+                blue-=1;
+                green-=1;
+                if (red<0)
+                    red=0;
+                if (green<0)
+                    green=0;
+                if (blue<0)
+                    blue=0;
+                if (red>255)
+                    red=255;
+                if (green>255)
+                    green=255;
+                if (blue>255)
+                    blue=255;
+                FieldArrayNext[xIndex][yIndex].setChannelRed(red);
+                FieldArrayNext[xIndex][yIndex].setChannelGreen(green);
+                FieldArrayNext[xIndex][yIndex].setChannelBlue(blue);
             }
             else
             {

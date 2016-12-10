@@ -19,34 +19,34 @@ public class Field extends JPanel{
             {
                 FieldArray[i][j]=new FieldElement();
                 FieldArrayNext[i][j]=new FieldElement();
-                if ((i==0)|| (i==49)|| (i==99)|| (i==149) || (i==199) ||(j==0)|| (j==49)|| (j==99) || (j==24)|| (j==74)) {
-
-                    FieldArray[i][j].setAlive(true);
-                    FieldArray[i][j].setChannelRed(i);
-                    FieldArray[i][j].setChannelGreen(j);
-                    FieldArray[i][j].setChannelBlue(i / 2 + j);
-
-                    if (i==149)
-                    {
-                        FieldArray[i][j].setChannelRed(0);
-                        FieldArray[i][j].setChannelGreen(255);
-                        FieldArray[i][j].setChannelBlue(0);
-                    }
-                    if (i==99)
-                    {
-                        FieldArray[i][j].setChannelRed(255);
-                        FieldArray[i][j].setChannelGreen(0);
-                        FieldArray[i][j].setChannelBlue(0);
-                    }
-                    if (i==49)
-                    {
-                        FieldArray[i][j].setChannelRed(0);
-                        FieldArray[i][j].setChannelGreen(0);
-                        FieldArray[i][j].setChannelBlue(255);
-                    }
-
-
-                }
+//                if ((i==0)|| (i==49)|| (i==99)|| (i==149) || (i==199) ||(j==0)|| (j==49)|| (j==99) || (j==24)|| (j==74)) {
+//
+//                    FieldArray[i][j].setAlive(true);
+//                    FieldArray[i][j].setChannelRed(i);
+//                    FieldArray[i][j].setChannelGreen(j);
+//                    FieldArray[i][j].setChannelBlue(i / 2 + j);
+//
+//                    if (i==149)
+//                    {
+//                        FieldArray[i][j].setChannelRed(0);
+//                        FieldArray[i][j].setChannelGreen(255);
+//                        FieldArray[i][j].setChannelBlue(0);
+//                    }
+//                    if (i==99)
+//                    {
+//                        FieldArray[i][j].setChannelRed(255);
+//                        FieldArray[i][j].setChannelGreen(0);
+//                        FieldArray[i][j].setChannelBlue(0);
+//                    }
+//                    if (i==49)
+//                    {
+//                        FieldArray[i][j].setChannelRed(0);
+//                        FieldArray[i][j].setChannelGreen(0);
+//                        FieldArray[i][j].setChannelBlue(255);
+//                    }
+//
+//
+//                }
             }
 //
         }
@@ -200,5 +200,36 @@ public class Field extends JPanel{
         }
 //        g.drawLine(0, 0, 1000, 1000);
 //        g.drawLine(800, 0, 0, 800);
+    }
+
+    public void setCell(boolean alive, int xIndex, int yIndex)
+    {
+        FieldArray[xIndex][yIndex].setAlive(alive);
+        FieldArray[xIndex][yIndex].setChannelRed(255);
+        FieldArray[xIndex][yIndex].setChannelGreen(255);
+        FieldArray[xIndex][yIndex].setChannelBlue(255);
+repaint();
+    }
+
+    public void setCell(boolean alive, int xIndex, int yIndex, int channelRed, int channelGreen, int channelBlue)
+    {
+        FieldArray[xIndex][yIndex].setAlive(alive);
+        FieldArray[xIndex][yIndex].setChannelRed(channelRed);
+        FieldArray[xIndex][yIndex].setChannelGreen(channelGreen);
+        FieldArray[xIndex][yIndex].setChannelBlue(channelBlue);
+        repaint();
+    }
+
+    public void clearField ()
+    {
+        for (int i=0;i<boardWidthInCells;i++) {
+            for (int j = 0; j < boardHeightInCells; j++) {
+                FieldArray[i][j].setChannelRed(0);
+                FieldArray[i][j].setChannelGreen(0);
+                FieldArray[i][j].setChannelBlue(0);
+                FieldArray[i][j].setAlive(false);
+            }
+        }
+        repaint();
     }
 }

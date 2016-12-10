@@ -19,7 +19,7 @@ public class Field extends JPanel{
             {
                 FieldArray[i][j]=new FieldElement();
                 FieldArrayNext[i][j]=new FieldElement();
-                if ((i==0)|| (i==49)|| (i==99)|| (i==149) || (i==199) ||(j==0)|| (j==49)|| (j==99)) {
+                if ((i==0)|| (i==49)|| (i==99)|| (i==149) || (i==199) ||(j==0)|| (j==49)|| (j==99) || (j==24)|| (j==74)) {
 
                     FieldArray[i][j].setAlive(true);
                     FieldArray[i][j].setChannelRed(i);

@@ -10,6 +10,7 @@ public class Life extends JFrame{
 //    int countMilan;
 //    int countReal;
     JFrame frame = new JFrame();
+    boolean simulationRunning=false;
 
     //JPanel boardCanvas = new JPanel();
     JPanel buttonPanel = new JPanel();
@@ -17,6 +18,7 @@ public class Life extends JFrame{
     JButton btnStart = new JButton("Start");
     JButton btnStep = new JButton("Next step");
     Field field = new Field();
+    Timer timer;
 //
 //    JButton btnMilan=new JButton("AC Milan");
 //    JButton btnReal=new JButton("Real Madrid");
@@ -48,7 +50,7 @@ public class Life extends JFrame{
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(btnStart);
         buttonPanel.add(btnStep);
-
+        timer = new Timer(10, new TimerTick());
 //        add(btnMilan);
 //        add(btnReal);
 //        add(lblScore);
@@ -64,6 +66,29 @@ public class Life extends JFrame{
 
 
     }
+    class TimerTick implements ActionListener
+    {
+
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+
+
+            field.stepCalculation();
+
+
+
+            if (simulationRunning==false)
+            {
+                timer.stop();
+
+            }
+        }
+
+    }
+
+
     public static void main(String[] args)
     {
         new Life();
@@ -79,28 +104,22 @@ public class Life extends JFrame{
             }
             if (ae.getSource()==btnStart)
             {
-                javax.swing.Timer timer = new Timer(10, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        field.stepCalculation();
-
-                    }
-                } );
-                //timer.start();
-                //btnStart.setText("Stop");
-                //timer.stop();
                 if (btnStart.getText()=="Start") {
 
-                   timer.start();
+                    simulationRunning=true;
                     btnStart.setText("Stop");
+                    timer.start();
                 }
                 else
                 {
-                   timer.stop();
-                    //timer.removeActionListener();
-                    //timer.isRunning();
+                    simulationRunning=false;
                     btnStart.setText("Start");
                 }
+
+                //timer.start();
+                //btnStart.setText("Stop");
+                //timer.stop();
+
             }
 
 //            if(ae.getSource() == btnMilan)

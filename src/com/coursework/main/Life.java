@@ -11,7 +11,7 @@ public class Life extends JFrame{
 //    int countReal;
 private int	cellSize = 8;
 private boolean rightMouseClick,leftMouseClick;
-private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
+private int mouseChannelRed=255, mouseChannelGreen=255,mouseChannelBlue=255;
     JFrame frame = new JFrame();
     boolean simulationRunning=false;
 
@@ -21,6 +21,7 @@ private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
     JButton btnStart = new JButton("Start");
     JButton btnStep = new JButton("Next step");
 
+    JButton btnColorWhite = new JButton("White");
     JButton btnColorRed = new JButton("Red");
     JButton btnColorGreen = new JButton("Green");
     JButton btnColorBlue = new JButton("Blue");
@@ -47,6 +48,7 @@ private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
 //        btnReal.addActionListener(listener);
         btnStep.addActionListener(listener);
         btnStart.addActionListener(listener);
+        btnColorWhite.addActionListener(listener);
         btnColorRed.addActionListener(listener);
         btnColorGreen.addActionListener(listener);
         btnColorBlue.addActionListener(listener);
@@ -63,6 +65,7 @@ private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(btnStart);
         buttonPanel.add(btnStep);
+        buttonPanel.add(btnColorWhite);
         buttonPanel.add(btnColorRed);
         buttonPanel.add(btnColorGreen);
         buttonPanel.add(btnColorBlue);
@@ -72,7 +75,13 @@ private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
         {
             public void mouseExited(MouseEvent a){}
             public void mouseClicked(MouseEvent a) {
+                if (a.getButton() == MouseEvent.BUTTON1) {
+                    field.setCell(true,a.getX()/cellSize,a.getY()/cellSize,mouseChannelRed,mouseChannelGreen,mouseChannelBlue);
 
+                }
+                if (a.getButton() == MouseEvent.BUTTON3) {
+                    field.setCell(false,a.getX()/cellSize,a.getY()/cellSize,0,0,0);
+                }
             }
             public void mouseEntered(MouseEvent a) {}
             public void mouseReleased(MouseEvent a) {
@@ -173,6 +182,12 @@ private int mouseChannelRed=255, mouseChannelGreen=0,mouseChannelBlue=0;
                 //btnStart.setText("Stop");
                 //timer.stop();
 
+            }
+            if (ae.getSource()==btnColorWhite)
+            {
+                mouseChannelRed=255;
+                mouseChannelGreen=255;
+                mouseChannelBlue=255;
             }
             if (ae.getSource()==btnColorRed)
             {

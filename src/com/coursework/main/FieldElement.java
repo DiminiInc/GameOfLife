@@ -1,63 +1,58 @@
 package com.coursework.main;
 
-/**
- * Created by Yaskovich Dmitry on 16/11/2016.
- */
-public class FieldElement {
-    private int channelRed, channelGreen, channelBlue;
-    private boolean alive;
+public class FieldElement { //cell class
+    private int channelRed, channelGreen, channelBlue; //cell color channels
+    private boolean alive; //cell alive value
 
-    public boolean isAlive() {
+    boolean isAlive() { //get cell alive value
         return alive;
     }
 
-    public int getChannelBlue() {
+    int getChannelBlue() { //get cell blue channel value
         return channelBlue;
     }
 
-    public int getChannelGreen() {
+    int getChannelGreen() { //get cell green channel value
         return channelGreen;
     }
 
-    public int getChannelRed() {
+    int getChannelRed() { //get cell red channel value
         return channelRed;
     }
 
-    public void setAlive() {
+    void setAlive() { //default call to set cell alive value
         this.alive = false;
     }
 
-    public void setChannelBlue() {
+    void setChannelBlue() { //default call to set cell blue channel value
         this.channelBlue = 0;
     }
 
-    public void setChannelGreen() {
+    void setChannelGreen() { //default call to set cell green channel value
         this.channelGreen = 0;
     }
 
-    public void setChannelRed() {
+    void setChannelRed() { //default call to set cell red channel value
         this.channelRed = 0;
     }
 
-    public void setAlive(boolean alive) {
+    void setAlive(boolean alive) { //set cell alive value
         this.alive = alive;
     }
 
-    public void setChannelBlue(int channelBlue) {
+    void setChannelBlue(int channelBlue) { //set cell blue channel value
         this.channelBlue = channelBlue;
     }
 
-    public void setChannelGreen(int channelGreen) {
+    void setChannelGreen(int channelGreen) { //set cell green channel value
         this.channelGreen = channelGreen;
     }
 
-    public void setChannelRed(int channelRed) {
+    void setChannelRed(int channelRed) { //set cell red channel value
         this.channelRed = channelRed;
     }
 
-    public void changeAlive()
-    {
+    void changeAlive() { //change cell alive value
         this.alive^=alive;
     }
-
 }

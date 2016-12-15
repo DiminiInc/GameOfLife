@@ -20,6 +20,7 @@ public class Life extends JFrame{ //application frame class
     private JButton btnAbout = new JButton("About"); //button to get info about the program
     private Field field = new Field(); //create new field
     private Timer timer; //create timer
+    private java.net.URL url = ClassLoader.getSystemResource("com/coursework/main/Conway's Game of Life Logo 64x64.png");
 
     private Life() //create instance of program
     {
@@ -89,6 +90,9 @@ public class Life extends JFrame{ //application frame class
              @Override
              public void mouseMoved(MouseEvent e) {}
         });
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Image img = kit.createImage(url);
+        this.setIconImage(img);
         setVisible(true); //set app visible
     }
 
@@ -109,9 +113,10 @@ public class Life extends JFrame{ //application frame class
     {
         new Life();
     } //main function, creation of program
-    
+
     class InnerListener implements ActionListener //listener of buttons
     {
+        ImageIcon icon = new ImageIcon(url);
         public void actionPerformed(ActionEvent ae) //button actions
         {
             if (ae.getSource()==btnStep)//if button was Next step
@@ -174,7 +179,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnAbout) //if button was About show info about program
             {
-                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.0(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016");
+                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.1(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
     }

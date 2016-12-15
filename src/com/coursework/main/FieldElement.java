@@ -1,6 +1,6 @@
 package com.coursework.main;
 
-public class FieldElement { //cell class
+class FieldElement { //cell class
     private int channelRed, channelGreen, channelBlue; //cell color channels
     private boolean alive; //cell alive value
 
@@ -19,22 +19,22 @@ public class FieldElement { //cell class
     int getChannelRed() { //get cell red channel value
         return channelRed;
     }
-
-    void setAlive() { //default call to set cell alive value
-        this.alive = false;
-    }
-
-    void setChannelBlue() { //default call to set cell blue channel value
-        this.channelBlue = 0;
-    }
-
-    void setChannelGreen() { //default call to set cell green channel value
-        this.channelGreen = 0;
-    }
-
-    void setChannelRed() { //default call to set cell red channel value
-        this.channelRed = 0;
-    }
+//
+//    void setAlive() { //default call to set cell alive value
+//        this.alive = false;
+//    }
+//
+//    void setChannelBlue() { //default call to set cell blue channel value
+//        this.channelBlue = 0;
+//    }
+//
+//    void setChannelGreen() { //default call to set cell green channel value
+//        this.channelGreen = 0;
+//    }
+//
+//    void setChannelRed() { //default call to set cell red channel value
+//        this.channelRed = 0;
+//    }
 
     void setAlive(boolean alive) { //set cell alive value
         this.alive = alive;
@@ -52,7 +52,7 @@ public class FieldElement { //cell class
         this.channelRed = channelRed;
     }
 
-    void changeAlive() { //change cell alive value
-        this.alive^=alive;
-    }
+//    void changeAlive() { //change cell alive value
+//        this.alive^=alive;
+//    }
 }

@@ -21,7 +21,7 @@ public class Life extends JFrame{ //application frame class
     private Field field = new Field(); //create new field
     private Timer timer; //create timer
 
-    public Life() //create instance of program
+    private Life() //create instance of program
     {
         JPanel buttonPanel = new JPanel(); //panel for buttons
         InnerListener listener = new InnerListener(); //listener for button events
@@ -36,9 +36,9 @@ public class Life extends JFrame{ //application frame class
         btnFaster.addActionListener(listener);
         btnAbout.addActionListener(listener);
         this.setTitle("Game of Life"); //set frame title
-        // setResizable(false);
+        setResizable(false); //disallow resize of window
         getContentPane().setBackground(new Color(50,50,50)); //set background color
-        setSize(1700,900); //set app size
+        setSize(805,665); //set app size
         setLayout(new BorderLayout()); //set border layout
         field.setBackground(new Color(32,32,32)); //set field background color
         add(field, BorderLayout.CENTER); //add field to center
@@ -98,7 +98,7 @@ public class Life extends JFrame{ //application frame class
         public void actionPerformed(ActionEvent e) //listener of timer actions
         {
             field.stepCalculation(); //calculate next state of field
-            if (simulationRunning==false) //if simulation was stopped
+            if (!simulationRunning) //if simulation was stopped
             {
                 timer.stop(); //stop timer
             }
@@ -120,7 +120,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnStart) //if button was Start/Stop
             {
-                if (btnStart.getText()=="Start") //if button was in stop-mode
+                if (!simulationRunning) //if button was in stop-mode
                 {
                     simulationRunning=true; //enter simulation mode
                     btnStart.setText("Stop"); //change button title
@@ -174,7 +174,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnAbout) //if button was About show info about program
             {
-                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.0.11(pre-alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016");
+                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.0(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016");
             }
         }
     }

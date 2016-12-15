@@ -6,8 +6,8 @@ import java.awt.*;
     Life model is running on torus surface, where left side is connected with right and bottom side is connected with top one
 */
 public class Field extends JPanel{ //field of cells class
-    private int	boardWidthInCells = 200; //board size in number of cells
-    private int	boardHeightInCells = 100;
+    private int	boardWidthInCells = 100; //board size in number of cells
+    private int	boardHeightInCells = 75;
     private FieldElement[][] FieldArray = new FieldElement[boardWidthInCells][boardHeightInCells]; //array of cells
     private FieldElement[][] FieldArrayNext = new FieldElement[boardWidthInCells][boardHeightInCells]; //array of cells for next step calculation
     Field(){ //creation new instance of field
@@ -49,7 +49,7 @@ public class Field extends JPanel{ //field of cells class
     private void cellRecalculation(int xIndex, int yIndex) //calculate next cell state
     {
         int red=0,green=0,blue=0,quantity=0,iIndex,jIndex; //local variable of cell colors, number of cell neighbours and cell indexes
-        for (int i=(xIndex-1);i<=(xIndex+1);i++) //cycle throught all neighbours of a cell
+        for (int i=(xIndex-1);i<=(xIndex+1);i++) //cycle through all neighbours of a cell
         {
             for (int j=(yIndex-1);j<=(yIndex+1);j++)
             {
@@ -136,7 +136,7 @@ public class Field extends JPanel{ //field of cells class
     {
         int	cellSize = 8;
         super.paint(g);
-        for (int i=0;i<boardWidthInCells;i++) //cycle throught all cells
+        for (int i=0;i<boardWidthInCells;i++) //cycle through all cells
         {
             for (int j=0;j<boardHeightInCells;j++)
             {
@@ -146,16 +146,16 @@ public class Field extends JPanel{ //field of cells class
         }
     }
 
-    public void setCell(boolean alive, int xIndex, int yIndex) //default call to set new cell
-    {
-        FieldArray[xIndex][yIndex].setAlive(alive); //set cell alive
-        FieldArray[xIndex][yIndex].setChannelRed(255); //set default cell colors
-        FieldArray[xIndex][yIndex].setChannelGreen(255);
-        FieldArray[xIndex][yIndex].setChannelBlue(255);
-        repaint(); //redraw field
-    }
+//    void setCell(boolean alive, int xIndex, int yIndex) //default call to set new cell
+//    {
+//        FieldArray[xIndex][yIndex].setAlive(alive); //set cell alive
+//        FieldArray[xIndex][yIndex].setChannelRed(255); //set default cell colors
+//        FieldArray[xIndex][yIndex].setChannelGreen(255);
+//        FieldArray[xIndex][yIndex].setChannelBlue(255);
+//        repaint(); //redraw field
+//    }
 
-    public void setCell(boolean alive, int xIndex, int yIndex, int channelRed, int channelGreen, int channelBlue) //set new cell
+    void setCell(boolean alive, int xIndex, int yIndex, int channelRed, int channelGreen, int channelBlue) //set new cell
     {
         FieldArray[xIndex][yIndex].setAlive(alive); //set cell alive
         FieldArray[xIndex][yIndex].setChannelRed(channelRed); //set cell colors
@@ -164,7 +164,7 @@ public class Field extends JPanel{ //field of cells class
         repaint(); //redraw field
     }
 
-    public void clearField () //clear field
+    void clearField () //clear field
     {
         for (int i=0;i<boardWidthInCells;i++) //cycle through all cells
         {

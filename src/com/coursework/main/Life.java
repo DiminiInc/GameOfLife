@@ -109,7 +109,7 @@ public class Life extends JFrame{ //application frame class
     {
         new Life();
     } //main function, creation of program
-
+    
     class InnerListener implements ActionListener //listener of buttons
     {
         public void actionPerformed(ActionEvent ae) //button actions

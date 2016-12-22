@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 public class Life extends JFrame{ //application frame class
     private int	cellSize = 8; //cell size set
+    private int	boardWidthInCells = 150; //board size in number of cells
+    private int	boardHeightInCells = 100;
     private int timerDelay = 10;//set timer delay
     private int mouseChannelRed=255, mouseChannelGreen=255,mouseChannelBlue=255; //default mouse brush color
     private boolean simulationRunning=false;//set game is not started
@@ -20,7 +22,7 @@ public class Life extends JFrame{ //application frame class
     private JButton btnAbout = new JButton("About"); //button to get info about the program
     private Field field = new Field(); //create new field
     private Timer timer; //create timer
-    private java.net.URL url = ClassLoader.getSystemResource("com/coursework/main/Conway's Game of Life Logo 64x64.png");
+    private java.net.URL url = ClassLoader.getSystemResource("com/coursework/main/Conway's Game of Life Logo 64x64.png");//add app icon
 
     private Life() //create instance of program
     {
@@ -39,7 +41,7 @@ public class Life extends JFrame{ //application frame class
         this.setTitle("Game of Life"); //set frame title
         setResizable(false); //disallow resize of window
         getContentPane().setBackground(new Color(50,50,50)); //set background color
-        setSize(805,665); //set app size
+        setSize(1210,870); //set app size
         setLayout(new BorderLayout()); //set border layout
         field.setBackground(new Color(32,32,32)); //set field background color
         add(field, BorderLayout.CENTER); //add field to center
@@ -62,11 +64,13 @@ public class Life extends JFrame{ //application frame class
             {
                 if (a.getButton() == MouseEvent.BUTTON1) //if right-clicked
                 {
-                    field.setCell(true,a.getX()/cellSize,a.getY()/cellSize,mouseChannelRed,mouseChannelGreen,mouseChannelBlue); //set cell
+                    if(((a.getX()/cellSize)>=0) &&((a.getX()/cellSize)<boardWidthInCells)&&((a.getY()/cellSize)>=0)&&((a.getY()/cellSize)<boardHeightInCells))
+                        field.setCell(true,a.getX()/cellSize,a.getY()/cellSize,mouseChannelRed,mouseChannelGreen,mouseChannelBlue); //set cell
                 }
                 if (a.getButton() == MouseEvent.BUTTON3) //if left-clicked
                 {
-                    field.setCell(false,a.getX()/cellSize,a.getY()/cellSize,0,0,0); //remove cell
+                    if(((a.getX()/cellSize)>=0) &&((a.getX()/cellSize)<boardWidthInCells)&&((a.getY()/cellSize)>=0)&&((a.getY()/cellSize)<boardHeightInCells))
+                        field.setCell(false,a.getX()/cellSize,a.getY()/cellSize,0,0,0); //remove cell
                 }
             }
             public void mouseEntered(MouseEvent a) {}
@@ -80,17 +84,19 @@ public class Life extends JFrame{ //application frame class
              {
                  if (SwingUtilities.isLeftMouseButton(e))  //if dragged with left click
                  {
-                     field.setCell(true,e.getX()/cellSize,e.getY()/cellSize,mouseChannelRed,mouseChannelGreen,mouseChannelBlue); //set cell
+                     if(((e.getX()/cellSize)>=0) &&((e.getX()/cellSize)<boardWidthInCells)&&((e.getY()/cellSize)>=0)&&((e.getY()/cellSize)<boardHeightInCells))
+                        field.setCell(true,e.getX()/cellSize,e.getY()/cellSize,mouseChannelRed,mouseChannelGreen,mouseChannelBlue); //set cell
                  }
                  if (SwingUtilities.isRightMouseButton(e)) //if dragged with right click
                  {
-                     field.setCell(false,e.getX()/cellSize,e.getY()/cellSize,0,0,0); //remove cell
+                     if(((e.getX()/cellSize)>=0) &&((e.getX()/cellSize)<boardWidthInCells)&&((e.getY()/cellSize)>=0)&&((e.getY()/cellSize)<boardHeightInCells))
+                        field.setCell(false,e.getX()/cellSize,e.getY()/cellSize,0,0,0); //remove cell
                  }
              }
              @Override
              public void mouseMoved(MouseEvent e) {}
         });
-        Toolkit kit = Toolkit.getDefaultToolkit();
+        Toolkit kit = Toolkit.getDefaultToolkit();//set app icon
         Image img = kit.createImage(url);
         this.setIconImage(img);
         setVisible(true); //set app visible
@@ -179,7 +185,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnAbout) //if button was About show info about program
             {
-                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.1(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.2(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
     }

@@ -5,8 +5,8 @@ import java.awt.event.*;
 
 public class Life extends JFrame{ //application frame class
     private int	cellSize = 8; //cell size set
-    private int	boardWidthInCells = 150; //board size in number of cells
-    private int	boardHeightInCells = 100;
+    private int	boardWidthInCells = 125; //board size in number of cells
+    private int	boardHeightInCells = 75;
     private int timerDelay = 10;//set timer delay
     private int mouseChannelRed=255, mouseChannelGreen=255,mouseChannelBlue=255; //default mouse brush color
     private boolean simulationRunning=false;//set game is not started
@@ -41,7 +41,7 @@ public class Life extends JFrame{ //application frame class
         this.setTitle("Game of Life"); //set frame title
         setResizable(false); //disallow resize of window
         getContentPane().setBackground(new Color(50,50,50)); //set background color
-        setSize(1210,870); //set app size
+        setSize(1010,670); //set app size
         setLayout(new BorderLayout()); //set border layout
         field.setBackground(new Color(32,32,32)); //set field background color
         add(field, BorderLayout.CENTER); //add field to center
@@ -185,7 +185,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnAbout) //if button was About show info about program
             {
-                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.2(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.3(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
     }

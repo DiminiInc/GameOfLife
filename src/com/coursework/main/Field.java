@@ -6,8 +6,8 @@ import java.awt.*;
     Life model is running on torus surface, where left side is connected with right and bottom side is connected with top one
 */
 public class Field extends JPanel{ //field of cells class
-    private int	boardWidthInCells = 150; //board size in number of cells
-    private int	boardHeightInCells = 100;
+    private int	boardWidthInCells = 125; //board size in number of cells
+    private int	boardHeightInCells = 75;
     private FieldElement[][] FieldArray = new FieldElement[boardWidthInCells][boardHeightInCells]; //array of cells
     private FieldElement[][] FieldArrayNext = new FieldElement[boardWidthInCells][boardHeightInCells]; //array of cells for next step calculation
     Field(){ //creation new instance of field

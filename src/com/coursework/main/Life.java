@@ -23,6 +23,8 @@ public class Life extends JFrame{ //application frame class
     private Field field = new Field(); //create new field
     private Timer timer; //create timer
     private java.net.URL url = ClassLoader.getSystemResource("com/coursework/main/Conway's Game of Life Logo 64x64.png");//add app icon
+    private UpdateModule update = new UpdateModule(); //create new update thread
+    private Thread updateThread = new Thread(update);
 
     private Life() //create instance of program
     {
@@ -100,6 +102,12 @@ public class Life extends JFrame{ //application frame class
         Image img = kit.createImage(url);
         this.setIconImage(img);
         setVisible(true); //set app visible
+        updateThread.start(); //check for updates
+        this.addWindowListener(new WindowAdapter(){ //add action on app close
+            public void windowClosing(WindowEvent e){
+                updateThread.stop(); //kill thread
+            }
+        });
     }
 
     class TimerTick implements ActionListener //timer listener
@@ -185,7 +193,7 @@ public class Life extends JFrame{ //application frame class
             }
             if (ae.getSource()==btnAbout) //if button was About show info about program
             {
-                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.0.1.3(alpha)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2016", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, "Game of Life\nversion 0.1.1.0(beta)\n\nDevelopment: Yaskovich Dmitry\nDesign: Yaskovich Dmitry\nQuality assuarance: Yaskovich Dmitry\n\n© Dimini Inc., 2017", "About programme", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
     }

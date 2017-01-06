@@ -13,3 +13,15 @@ The universe of the Game of Life is an two-dimensional orthogonal grid, where to
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously. The rules continue to be applied repeatedly to create further generations.
 
 ![Screenshot](http://dimini.tk/en/site_files/game-of-life-screenshot-1.png)
+
+Features:
+
+-Autoupdate
+
+-English interface
+
+-Adjustable simulation speed
+
+-Adjustable cell colors
+
+-Open-source
